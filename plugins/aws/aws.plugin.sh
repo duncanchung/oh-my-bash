@@ -14,6 +14,12 @@ function agp {
 }
 
 function asp {
+  if [[ -z "$1" ]]; then
+    unset AWS_DEFAULT_PROFILE AWS_PROFILE
+    echo AWS profile cleared.
+    return
+  fi
+
   local rprompt=${RPROMPT/<aws:$(agp)>/}
 
   export AWS_DEFAULT_PROFILE=$1
